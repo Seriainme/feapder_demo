@@ -19,13 +19,12 @@ jobs:
         with:
               username: seriainme
               password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: build image
-        run: |
-          COMMIT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
-          docker build -t $COMMIT_SHA -f Dockerfile .
-
-      - name: push image to Docker Hub
-        run: docker push seriainme/${{ github.repository }}:$COMMIT_SHA
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: seriainme/toast:latest
 
 
  
