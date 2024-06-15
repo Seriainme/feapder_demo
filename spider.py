@@ -46,7 +46,7 @@ class MongoLog(MongoHandler):
     def __init__(self, db='kol'):
         # 写死数据库和Mongo连接信息，日志存储在同名文集合下。比如b.py继承这个class ，那么集合名为b
         collection = 'log_' + os.path.basename(inspect.stack()[1].filename).split(".")[0]
-        client = pymongo.MongoClient(f'mongodb://admin:Mongo_2024@139.224.40.69:27017/')
+        client = pymongo.MongoClient(f'mongodb://admin:pwd@139.9:27017/')
         super().__init__(client, db, collection)
         logger.add(self)
         self.log = logger
