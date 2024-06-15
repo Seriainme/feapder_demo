@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: first docker build test
-      run: docker build . --file Dockerfile --tag test:$(date +%s)
+      run: docker build -t ${{ github.repository }}:${{ github.sha }} -f path/to/Dockerfile .
