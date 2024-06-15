@@ -22,8 +22,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: /docker
-          file: ./docker/Dockerfile
+          echo pwd
+          context: .
+          file: ./Dockerfile
           push: true
           tags: seriainme/toast:latest
 
