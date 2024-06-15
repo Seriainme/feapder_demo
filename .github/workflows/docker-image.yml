@@ -16,7 +16,8 @@ jobs:
     - uses: actions/checkout@v4
     - name: login Docker Hub
       run: |
-        docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_PASSWORD }}
+        echo {{ secrets.DOCKERHUB_USERNAME }}
+        docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password-stdin=${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: 构建并标记镜像
       run: |
