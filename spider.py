@@ -54,5 +54,6 @@ class MongoLog(MongoHandler):
     def __call__(self, *args, **kwargs):
         return self.log
 
-my_log = MongoLog()()
-my_log.info(str(int(time.time())))
+# my_log = MongoLog()()
+# my_log.info(str(int(time.time())))
+print('fxx my job')
