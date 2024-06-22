@@ -7,6 +7,7 @@ import threading
 import logging
 from loguru import  logger
 import inspect,pymongo
+import arrow
 
 
 class MongoHandler(logging.Handler):
@@ -56,4 +57,7 @@ class MongoLog(MongoHandler):
 
 # my_log = MongoLog()()
 # my_log.info(str(int(time.time())))
-print('fxx my job')
+today = arrow.now().format('YYYY-MM-DD')
+
+# Print the message with today's date
+print(f'fxx my job {today}')
