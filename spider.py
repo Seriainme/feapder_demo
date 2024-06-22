@@ -60,4 +60,4 @@ class MongoLog(MongoHandler):
 today = arrow.now().format('YYYY-MM-DD')
 
 # Print the message with today's date
-print(f'fxx my job {today} n my boss test')
+print(f'fxx my job {today} n my boss test now for cicd ')
