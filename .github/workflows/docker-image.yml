@@ -30,6 +30,10 @@ jobs:
         id: shortsha
         run: echo "SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-8)" >> $GITHUB_ENV
 
+      - name: pre 登录到 Harbor
+        run: |
+          echo ${{ secrets.HARBOR_CREDENTIALS }} | base64 --decode | docker login -u $(cut -d ':' -f1 <<< "${{ secrets.HARBOR_CREDENTIALS }}") --password-stdin ${{ secrets.HARBOR_REGISTRY_URL }}
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -45,8 +49,8 @@ jobs:
 
       - name: 构建并标记镜像
         run: |
-          docker build -t ${{ secrets.HARBOR_REGISTRY_URL }}/project-name/${{ github.repository }}:${{ env.SHORT_SHA }} -f path/to/Dockerfile .
+          docker build -t ${{ secrets.HARBOR_REGISTRY_URL }}/test/${{ github.repository }}:${{ env.SHORT_SHA }} -f path/to/Dockerfile .
 
       - name: 推送镜像到 Harbor
-        run: docker push ${{ secrets.HARBOR_REGISTRY_URL }}/project-name/${{ github.repository }}:${{ env.SHORT_SHA }}
+        run: docker push ${{ secrets.HARBOR_REGISTRY_URL }}/test/${{ github.repository }}:${{ env.SHORT_SHA }}
 
