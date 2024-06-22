@@ -9,7 +9,7 @@ RUN pip install --upgrade pip -i https://pypi.doubanio.com/simple
 # 安装pipenv
 RUN pip install pipenv -i https://pypi.doubanio.com/simple
 WORKDIR /app
-RUN pipenv install --system --deploy --ignore-pipfile
+RUN pipenv install --system --deploy --ignore-pipfile -vv
 COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
