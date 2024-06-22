@@ -39,3 +39,14 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ env.SHORT_SHA }}
+      - name: 登录到 Harbor
+        run: |
+          echo ${{ secrets.HARBOR_CREDENTIALS }} | base64 --decode | docker login -u $(cut -d ':' -f1 <<< "${{ secrets.HARBOR_CREDENTIALS }}") --password-stdin ${{ secrets.HARBOR_REGISTRY_URL }}
+
+      - name: 构建并标记镜像
+        run: |
+          docker build -t ${{ secrets.HARBOR_REGISTRY_URL }}/project-name/${{ github.repository }}:${{ env.SHORT_SHA }} -f path/to/Dockerfile .
+
+      - name: 推送镜像到 Harbor
+        run: docker push ${{ secrets.HARBOR_REGISTRY_URL }}/project-name/${{ github.repository }}:${{ env.SHORT_SHA }}
+
