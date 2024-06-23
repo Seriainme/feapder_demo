@@ -52,7 +52,7 @@ jobs:
 
       - name: 构建并标记镜像
         run: |
-          docker build -t http://39.107.141.11:80/test/${{ github.repository }}:${{ env.SHORT_SHA }} -f path/to/Dockerfile .
+          docker build -t http://39.107.141.11:80/test/${{ github.repository }}:${{ env.SHORT_SHA }} 
 
       - name: 推送镜像到 Harbor
         run: docker push http://39.107.141.11:80/test/${{ github.repository }}:${{ env.SHORT_SHA }}
