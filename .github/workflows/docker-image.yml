@@ -51,6 +51,6 @@ jobs:
           password: ${{ secrets.HARBOR_PASSWORD }}
 
       - run: |
-          docker build . -t http://39.107.141.11:80/test/toast:${{ github.sha }}
+          docker build . -t http://39.107.141.11:80/test/toast:latest
           docker push http://39.107.141.11:80/test/toast:${{ github.sha }}
 
