@@ -52,5 +52,5 @@ jobs:
 
       - run: |
           docker build . -t http://39.107.141.11:80/test/toast:latest
-          docker push http://39.107.141.11:80/test/toast:${{ github.sha }}
+          docker push http://39.107.141.11:80/test/toast:latest
 
