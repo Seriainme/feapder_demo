@@ -42,15 +42,12 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ env.SHORT_SHA }}
+      - name: Create .env file
+        run: echo "MONGO_PORT=${{ secrets.MONGO_PORT }}" > .env
 
-#      - name: pre Login to Harbor
-#        uses: azure/docker-login@v2
-#        with:
-#          login-server: http://39.107.141.11:80
-#          username: ${{ secrets.HARBOR_USERNAME }}
-#          password: ${{ secrets.HARBOR_PASSWORD }}
-#
-#      - run: |
-#          docker build . -t http://39.107.141.11:80/test/toast:latest
-#          docker push http://39.107.141.11:80/test/toast:latest
+      - name: Use .env file for deployment or other operations
+        run: |
+          # 在这里添加你需要使用 .env 文件的操作
+          # 比如运行测试，部署等
+          cat .env  # 这只是一个示例，可以用其他命令
 
