@@ -8,7 +8,9 @@ import logging
 from loguru import  logger
 import inspect,pymongo
 import arrow
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class MongoHandler(logging.Handler):
     # 单例模式，确保每次实例化都调用一个对象。
@@ -61,4 +63,4 @@ today = arrow.now().format('YYYY-MM-DD')
 
 # Print the message with today's date
 print(f'fxx my job {today}  test now for    harbor  ')
-print(os.envget("MONGO_PORT"))
+print(os.environ.get("MONGO_PORT"))
