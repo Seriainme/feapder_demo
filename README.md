@@ -1,9 +1,11 @@
 # feapder_demo
-a demo for the study of feapder
-### features
-- I used pipenv to manage the packages
-- I use CICD to build docker image n push it to docker hub(and I put the settings in the secrets n merged it into the process)
-- write the log into mongo recording time n ip
-- monitor
-- simple feapder code
-- simple drissionpage code  
+
+A demo project for learning and exploring feapder.
+
+### Features
+- **Package Management:** Managed with Pipenv for easy dependency handling.
+- **CI/CD Integration:** Automated Docker image building and pushing to Docker Hub using CI/CD pipelines. The necessary settings are securely stored in secrets and integrated into the process.
+- **Logging:** Logs are stored in MongoDB, capturing timestamps and IP addresses.
+- **Monitoring:** Basic monitoring setup to track the scraper's performance.
+- **Simple feapder Code:** Basic implementation of feapder to demonstrate its usage.
+- **Simple drissionpage Code:** Includes a straightforward example using drissionpage.
